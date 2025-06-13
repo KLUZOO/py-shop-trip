@@ -5,7 +5,7 @@ from app.customer import Customer
 
 
 def shop_trip() -> None:
-    with (open("C:\\Mate academy\\py-shop-trip\\app\\config.json", "r")
+    with (open("app/config.json", "r")
           as file_json):
         data = json.load(file_json)
     fuel_price = data["FUEL_PRICE"]
