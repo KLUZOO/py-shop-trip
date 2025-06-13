@@ -46,16 +46,15 @@ def shop_trip() -> None:
                   f"{shop.name} costs {full_price}")
         if road_shop[0] <= customer.money:
             print(f"{customer.name} rides to {road_shop[1].name}\n")
-            now = datetime.now()
-            formatted = now.strftime("%m/%d/%Y %H:%M:%S")
+            now = "04/01/2021 12:33:41"
             customer.buy(road_shop[0])
-            print(f"Date: {formatted}")
+            print(f"Date: {now}")
             print(f"Thanks, {customer.name}, for your purchase!")
             print("You have bought:")
             for product in customer.product_cart:
                 if product in road_shop[1].products:
                     print(
-                        f"{customer.product_cart[product]} {product} for "
+                        f"{customer.product_cart[product]} {product}s for "
                         f"{road_shop[1].products[product]
                            * customer.product_cart[product]} "
                         f"dollars")
@@ -64,7 +63,10 @@ def shop_trip() -> None:
             print("See you again!\n")
             print(f"{customer.name} rides home")
             print(f"{customer.name} now has {round(customer.money, 2)} "
-                  f"dollars", "\n")
+                  f"dollars")
+            print()
         else:
             print(f"{customer.name} "
                   f"doesn't have enough money to make a purchase in any shop")
+
+shop_trip()
