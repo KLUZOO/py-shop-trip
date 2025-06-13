@@ -52,16 +52,18 @@ def shop_trip() -> None:
             print("You have bought:")
             for product in customer.product_cart:
                 if product in road_shop[1].products:
-                    print(
-                        f"{customer.product_cart[product]} {product}s for "
-                        f"{int(road_shop[1].products[product]
+                    prt1 = (road_shop[1].products[product]
+                            * customer.product_cart[product])
+                    prt = (int(road_shop[1].products[product]
                                * customer.product_cart[product])
-                            if road_shop[1].products[product]
+                           if road_shop[1].products[product]
                            * customer.product_cart[product]
                            == int(road_shop[1].products[product]
                                   * customer.product_cart[product])
-                            else road_shop[1].products[product]
-                            * customer.product_cart[product]} "
+                           else prt1)
+                    print(
+                        f"{customer.product_cart[product]} {product}s for "
+                        f"{prt} "
                         f"dollars")
             print(f"Total cost is {road_shop[1].purchase_price(customer)} "
                   f"dollars")
