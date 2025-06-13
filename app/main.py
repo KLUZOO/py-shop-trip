@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 from app.shop import Shop
 from app.car import Car
 from app.customer import Customer
@@ -35,7 +34,7 @@ def shop_trip() -> None:
             full_price = round(customer.car.price_trip(shop.location,
                                                        fuel_price)
                                + shop.purchase_price(customer)
-                               + customer.car.price_trip(customer.location_home,
+                               + customer.car.price_trip(customer.location_h,
                                                          fuel_price), 2)
             if road_shop:
                 if road_shop[0] > full_price:
@@ -55,8 +54,14 @@ def shop_trip() -> None:
                 if product in road_shop[1].products:
                     print(
                         f"{customer.product_cart[product]} {product}s for "
-                        f"{road_shop[1].products[product]
-                           * customer.product_cart[product]} "
+                        f"{int(road_shop[1].products[product]
+                               * customer.product_cart[product])
+                            if road_shop[1].products[product]
+                           * customer.product_cart[product]
+                           == int(road_shop[1].products[product]
+                                  * customer.product_cart[product])
+                            else road_shop[1].products[product]
+                            * customer.product_cart[product]} "
                         f"dollars")
             print(f"Total cost is {road_shop[1].purchase_price(customer)} "
                   f"dollars")
@@ -68,5 +73,6 @@ def shop_trip() -> None:
         else:
             print(f"{customer.name} "
                   f"doesn't have enough money to make a purchase in any shop")
+
 
 shop_trip()

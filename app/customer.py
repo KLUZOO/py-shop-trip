@@ -5,13 +5,13 @@ class Customer:
     def __init__(self,
                  name: str,
                  product_cart: dict,
-                 location_home: list,
+                 location_h: list,
                  money: int | float,
                  car: Car,
                  ) -> None:
         self.name = name
         self.product_cart = product_cart
-        self.location_home = location_home
+        self.location_h = location_h
         self.money = money
         self.car = car
 
